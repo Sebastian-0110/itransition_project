@@ -4,7 +4,7 @@ class UserRepository {
     }
 
     async findById(id) {
-        return await this.userModel.findByPk();
+        return await this.userModel.findByPk(id);
     }
 
     async create(data) {
