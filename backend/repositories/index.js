@@ -1,6 +1,6 @@
 const { User } = require("../db");
 
-const UserRepository = require("./user");
+const UserRepository = require("./user-repository");
 
 
 const userRepository = new UserRepository(User);
