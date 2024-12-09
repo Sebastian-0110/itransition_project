@@ -22,6 +22,7 @@ const usernameValidator = () => {
         .withMessage(messages.required("username"))
         .isLength({ max: USERNAME_MAX_LENGTH })
         .withMessage(messages.maxLength("username"))
+        .escape()
 }
 
 const passwordValidator = () => {
