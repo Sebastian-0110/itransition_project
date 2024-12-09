@@ -4,3 +4,5 @@ const { userRepository } = require('../repositories');
 
 
 const userService = new UserService(userRepository, passwordService);
+
+module.exports = { userService };
