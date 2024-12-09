@@ -1,5 +1,4 @@
 const express = require("express");
-const { User } = require("./db");
 
 const authRoutes = require("./routes/auth");
 
