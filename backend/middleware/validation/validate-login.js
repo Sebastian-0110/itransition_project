@@ -1,5 +1,5 @@
 const { validators } = require("../../validation");
-const validateForm = require("../validate-form");
+const validateForm = require("./validate-form");
 
 const validateLogin = [
 	validators.emailValidator(),

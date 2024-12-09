@@ -1,5 +1,4 @@
-const validateForm = require("./validate-form");
+const validation = require("./validation");
 
 
-
-module.exports = { validateForm };
+module.exports = { validation };
