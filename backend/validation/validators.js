@@ -31,3 +31,10 @@ const passwordValidator = () => {
         .isLength({ max: PASSWORD_MAX_LENGTH })
         .withMessage(messages.maxLength("password"))
 }
+
+
+module.exports = {
+    emailValidator,
+    usernameValidator,
+    passwordValidator,
+}
