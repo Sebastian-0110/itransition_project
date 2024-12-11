@@ -1,5 +1,5 @@
 const { authErrors } = require("./errors");
-
+const UserMapper = require("./mappers/user-mapper");
 
 class UserService {
     constructor(userRepository, passwordService) {
@@ -8,7 +8,9 @@ class UserService {
     }
 
     async signup(data) {
-        return await this.userRepository.create(data);
+        data.password = await this.passwordService.generatePasswordHash(data.password);
+        const user = await this.userRepository.create(data);
+        if (user) return UserMapper.toDTO(user);
     }
 
     async login(email, password) {
@@ -18,7 +20,7 @@ class UserService {
             throw new authErrors.InvalidCredentials();
         }
 
-        return user;
+        return UserMapper.toDTO(user);
     }
 }
 

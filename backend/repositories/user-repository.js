@@ -1,21 +1,21 @@
-const UserMapper = require('./mappers/user-mapper');
-
-
 class UserRepository {
     constructor(userModel) {
         this.userModel = userModel;
     }
 
     async findById(id) {
-        return UserMapper.toDTO(await this.userModel.findByPk(id));
+        const user = await this.userModel.findByPk(id);
+        if (user) return user.toJSON();
     }
 
     async findByEmail(email) {
-        return UserMapper.toDTO(await this.userModel.findOne({ where: { email } }));
+        const user = await this.userModel.findOne({ where: { email } })
+        if (user) return user.toJSON();
     }
 
     async create(data) {
-        return UserMapper.toDTO(await this.userModel.create(data));
+        const user = await this.userModel.create(data);
+        if (user) return user.toJSON();
     }
 }
 
