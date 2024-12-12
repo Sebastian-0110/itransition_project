@@ -22,6 +22,14 @@ class UserService {
 
         return UserMapper.toDTO(user);
     }
+
+    async findById(id) {
+        const user = await this.userRepository.findById(id);
+
+        if (!user) throw authErrors.UserNotFound();
+
+        return UserMapper.toDTO(user);
+    }
 }
 
 module.exports = UserService;
