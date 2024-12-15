@@ -1,10 +1,16 @@
-import { StrictMode } from 'react'
+import { StrictMode, createContext, useState} from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import { BrowserRouter } from "react-router";
+
 import App from './App.jsx'
+import ThemeProvider from "./components/ThemeProvider.jsx";
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+	<BrowserRouter>
+		<StrictMode>
+			<ThemeProvider>
+				<App/>
+			</ThemeProvider>
+		</StrictMode>
+	</BrowserRouter>,
 )
