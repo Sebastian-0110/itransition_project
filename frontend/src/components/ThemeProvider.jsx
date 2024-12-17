@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import ThemeContext from "../context/ThemeContext.jsx";
 
 function ThemeProvider({ children}) {
-	const [theme, setTheme] = useState("light");
+	const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
 	const toggleTheme = () => {
-		setTheme(theme === "light" ? "dark": "light");
+		const newTheme = theme === "light" ? "dark": "light";
+		setTheme(newTheme);
+		localStorage.setItem("theme", newTheme);
 	}
 
 	useEffect(() => {
