@@ -1,15 +1,25 @@
-import { Routes, Route } from "react-router";
+import { Routes, Route, Navigate } from "react-router";
 
 import Home from "./pages/Home.jsx";
-import Profile from "./pages/Profile.jsx";
-import MainLayout from "./layouts/MainLayout.jsx";
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
+import NotFound from "./pages/NotFound.jsx"
+import LandingLayout from "./layouts/LandingLayout.jsx";
+
 
 function App() {
 	return (
 		<Routes>
-			<Route element={<MainLayout></MainLayout>}>
+			<Route element={<LandingLayout/>}>
 				<Route index element={<Home />}/>
-				<Route path="profile" element={<Profile />}/>
+
+				<Route path="/auth">
+					<Route index element={<Navigate to="signup" replace/>}/>
+					<Route path="login" element={<Login/>}/>
+					<Route path="signup" element={<Signup/>}/>
+				</Route>
+
+				<Route path="*" element={<NotFound/>}/>
 			</Route>
 		</Routes>
 	)
