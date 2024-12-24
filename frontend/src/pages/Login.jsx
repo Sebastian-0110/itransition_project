@@ -8,8 +8,8 @@ import { Link } from "react-router";
 
 function Login() {
 	return (
-		<Container fluid="md" className="p-3">
-			<Row className="justify-content-center align-items-center">
+		<Container fluid="md" className="p-3 h-100 align-items-center">
+			<Row className="h-100 justify-content-center align-items-center">
 				<Col md={6}>
 					<Form className="d-flex flex-column gap-4 justifiy-content-center">
 						<Form.Group controlId="email">

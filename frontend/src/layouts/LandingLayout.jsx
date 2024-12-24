@@ -4,8 +4,13 @@ import LandingNavbar from "../components/navbars/LandingNavbar.jsx";
 function MainLayout() {
 	return (
 		<>
-			<LandingNavbar />
-			<Outlet />
+			<div className="vh-100 d-flex flex-column">
+				<LandingNavbar />
+
+				<div className="flex-grow-1">
+					<Outlet />
+				</div>
+			</div>
 		</>
 	)
 }
