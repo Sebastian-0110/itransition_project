@@ -31,7 +31,7 @@ function Signup() {
 						<Button type="submit" variant="primary">Sign up</Button>
 
 						<Form.Text as="p" className="text-center">
-							Don't have an account? <Link to="/auth/signup">Sign up!</Link>
+							Already have an account? <Link to="/auth/login">Log in!</Link>
 						</Form.Text>
 					</Form>
 				</Col>
