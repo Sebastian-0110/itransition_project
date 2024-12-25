@@ -12,6 +12,8 @@ function Login() {
 			<Row className="h-100 justify-content-center align-items-center">
 				<Col md={6}>
 					<Form className="d-flex flex-column gap-4 justifiy-content-center">
+						<h1 className="mx-auto mb-3">Login</h1>
+
 						<Form.Group controlId="email">
 							<Form.Label>Email</Form.Label>
 							<Form.Control type="email" placeholder="john-doe@gmail.com" />
@@ -22,7 +24,7 @@ function Login() {
 							<Form.Control type="password" placeholder="qwerty123" />
 						</Form.Group>
 
-						<Button type="submit" variant="primary">Log in</Button>
+						<Button type="submit" variant="primary">Login</Button>
 
 						<Form.Text as="p" className="text-center">
 							Don't have an account? <Link to="/auth/signup">Sign up!</Link>
