@@ -16,10 +16,7 @@ router.post(
     "/signup",
     validation.validateSignup,
     async (req, res) => {
-        const username = req.body.username;
-        const email = req.body.email;
-        const password = req.body.password;
-
+        const { username, email, password } = req.body;
         const user = await userService.signup({ username, email, password });
 
         if (!user) {
