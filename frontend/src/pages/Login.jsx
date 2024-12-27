@@ -5,13 +5,14 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import { Link } from "react-router";
+import { endpoint } from "../config/api.js";
 
 function Login() {
 	return (
 		<Container fluid="md" className="p-3 h-100 align-items-center">
 			<Row className="h-100 justify-content-center align-items-center">
 				<Col md={6}>
-					<Form className="d-flex flex-column gap-4 justifiy-content-center">
+					<Form action={endpoint("/auth/login")} method="post" className="d-flex flex-column gap-4 justifiy-content-center">
 						<h1 className="mx-auto mb-3">Login</h1>
 
 						<Form.Group controlId="email">
