@@ -18,7 +18,7 @@ const sessionOptions = {
 	sameSite: true,
 }
 
-if (process.env.ENV === "production") {
+if (process.env.NODE_ENV === "production") {
 	sessionOptions.cookie.secure = true;
 }
 
