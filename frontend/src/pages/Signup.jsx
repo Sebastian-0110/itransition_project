@@ -15,17 +15,17 @@ function Signup() {
 
 						<Form.Group controlId="username">
 							<Form.Label>Usernme</Form.Label>
-							<Form.Control type="text" placeholder="john doe" />
+							<Form.Control type="text" name="username" placeholder="john doe" />
 						</Form.Group>
 
 						<Form.Group controlId="email">
 							<Form.Label>Email</Form.Label>
-							<Form.Control type="email" placeholder="john-doe@gmail.com" />
+							<Form.Control type="email" name="email" placeholder="john-doe@gmail.com" />
 						</Form.Group>
 
 						<Form.Group controlId="password">
 							<Form.Label>Password</Form.Label>
-							<Form.Control type="password" placeholder="qwerty123" />
+							<Form.Control type="password" name="password" placeholder="qwerty123" />
 						</Form.Group>
 
 						<Button type="submit" variant="primary">Sign up</Button>
