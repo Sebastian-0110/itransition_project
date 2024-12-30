@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -13,8 +13,32 @@ function SignupForm() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
+	const navigate = useNavigate();
+
+	async function onSubmit(e) {
+		e.preventDefault();
+
+		const result = await fetch(
+			endpoint("/auth/signup"),
+			{
+				method: "POST", headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ username, email, password }),
+			}
+		);
+
+		if (!result.ok) return alert("Invalid input"); // TODO: Implement a proper notification system
+
+		alert("Successfully signup. Now login!");
+		return navigate("/auth/login/");
+	}
+
 	return (
-		<Form action={endpoint("/auth/signup")} method="post" className="d-flex flex-column gap-4 justifiy-content-center">
+		<Form
+			action={endpoint("/auth/signup")}
+			method="post"
+			className="d-flex flex-column gap-4 justifiy-content-center"
+			onSubmit={onSubmit}
+		>
 			<h1 className="mx-auto mb-3">Sign up</h1>
 
 			<UsernameField value={username} onChange={(e) => setUsername(e.target.value)} />
