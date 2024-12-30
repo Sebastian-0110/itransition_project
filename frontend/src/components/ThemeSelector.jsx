@@ -1,5 +1,8 @@
-import { useContext } from "react"; // TODO: Should this be a hook to make this a one-liner instead of a two-liner?
-import ThemeContext from "../context/ThemeContext.jsx";
+import {useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { themeSlice } from "../state/";
+
+const { selectTheme, themes, toggle } = themeSlice;
 
 import DarkModeIcon from "../components/icons/DarkModeIcon.jsx";
 import LightModeIcon from "../components/icons/LightModeIcon.jsx";
@@ -7,15 +10,24 @@ import LightModeIcon from "../components/icons/LightModeIcon.jsx";
 import styles from "../styles/components/ThemeSelector.module.css"
 
 function ThemeSelector() {
-	const { theme, toggleTheme } = useContext(ThemeContext);
+	const dispatch = useDispatch();
+	const theme = useSelector(selectTheme);
+
+	useEffect(() => {
+		document.documentElement.setAttribute("data-bs-theme", theme);
+		localStorage.setItem("theme", theme);
+	}, [theme]);
+
+	const sliderClass = () => {
+		if (theme === themes.dark) return `${styles.slider} ${styles["slider-dark"]}`;
+		return `${styles.slider} ${styles["slider-light"]}`
+	};
 
 	return (
-		<div onClick={toggleTheme} className={styles.landscape}>
-			<div
-				className={`${styles.slider} ${theme === "dark" ? styles["slider-dark"] : styles["slider-light"]}`}
-			></div>
-			<LightModeIcon className={theme === "light" ? styles["active-theme"] : ""}/>
-			<DarkModeIcon className={theme === "dark" ? styles["active-theme"] : ""}/>
+		<div onClick={() => dispatch(toggle())} className={styles.landscape}>
+			<div className={sliderClass()}></div>
+			<LightModeIcon />
+			<DarkModeIcon  />
 		</div>
 	)
 }

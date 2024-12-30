@@ -3,14 +3,16 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from "react-router";
 
 import App from './App.jsx'
-import ThemeProvider from "./components/ThemeProvider.jsx";
+
+import { Provider } from "react-redux";
+import store from "./state/store.js";
 
 createRoot(document.getElementById('root')).render(
 	<BrowserRouter>
 		<StrictMode>
-			<ThemeProvider>
+			<Provider store={store}>
 				<App/>
-			</ThemeProvider>
+			</Provider>
 		</StrictMode>
 	</BrowserRouter>,
 )
