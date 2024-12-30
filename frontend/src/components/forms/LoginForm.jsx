@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router";
 
 import Form from "react-bootstrap/Form";
@@ -7,10 +8,15 @@ import Button from "react-bootstrap/Button";
 import { EmailField, PasswordField } from "src/components/forms/fields";
 import { endpoint } from "src/config/api.js";
 
+import { authSlice } from "src/state/slices"
+const { setLoggedIn } = authSlice;
+
 function LoginForm() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	async function onSubmit(e) {
 		e.preventDefault();
@@ -23,8 +29,11 @@ function LoginForm() {
 		);
 
 		if (!result.ok) return alert("Invalid credentials"); // TODO: Implement a proper notification system
-		return navigate("/");
+
+		dispatch(setLoggedIn(true));
+		return navigate("/"); // TODO: Change this to redirect to /app
 	}
+
 	return (
 		<Form
 			action={endpoint("/auth/login")}
