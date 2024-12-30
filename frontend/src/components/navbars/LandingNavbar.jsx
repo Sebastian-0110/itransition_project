@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router";
 
 import ThemeSelector from "../ThemeSelector.jsx";
-import styles from "../../styles/components/LandingNavbar.module.css";
+import styles from "/src/styles/components/Navbar.module.css";
 
 function LandingNavbar() {
 
