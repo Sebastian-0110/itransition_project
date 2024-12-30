@@ -6,6 +6,7 @@ class UserMapper {
 			id: userModel.id,
 			username: userModel.username,
 			email: userModel.email,
+			isAdmin: userModel.isAdmin,
 		}
 	}
 }
