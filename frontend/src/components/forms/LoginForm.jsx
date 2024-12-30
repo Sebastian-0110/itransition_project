@@ -9,7 +9,7 @@ import { EmailField, PasswordField } from "src/components/forms/fields";
 import { endpoint } from "src/config/api.js";
 
 import { authSlice } from "src/state/slices"
-const { setLoggedIn } = authSlice;
+const { setLoggedIn, setUser} = authSlice;
 
 function LoginForm() {
 	const [email, setEmail] = useState("");
@@ -31,6 +31,8 @@ function LoginForm() {
 		if (!result.ok) return alert("Invalid credentials"); // TODO: Implement a proper notification system
 
 		dispatch(setLoggedIn(true));
+		dispatch(setUser(await result.json()));
+
 		return navigate("/"); // TODO: Change this to redirect to /app
 	}
 
