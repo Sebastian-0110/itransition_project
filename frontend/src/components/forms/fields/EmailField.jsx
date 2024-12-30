@@ -10,7 +10,7 @@ function EmailField({ value, onChange }) {
 				name="email"
 				placeholder="john-doe@gmail.com"
 				required
-				maxLengt={EMAIL_MAX_LENGTH}
+				maxLength={EMAIL_MAX_LENGTH}
 				value={value}
 				onChange={onChange}
 			/>
