@@ -8,27 +8,15 @@ import NotFound from "./pages/NotFound.jsx"
 import LandingLayout from "./layouts/LandingLayout.jsx";
 
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
-import { setLoggedIn, setUser } from "src/state/slices/auth.js";
+import { fetchAuthState } from "src/state/thunks/auth.js";
 import { useDispatch } from "react-redux";
-import { endpoint } from "src/config/api.js";
 
 
 function App() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		async function fetchAuthState() {
-			const result = await fetch(
-				endpoint("/auth/status/"),
-				{ method: "GET", headers: { "Accept": "application/json" } }
-			);
-
-			if (!result.ok) return;
-			dispatch(setLoggedIn(true));
-			dispatch(setUser(await result.json()));
-		}
-
-		fetchAuthState();
+		dispatch(fetchAuthState());
 	}, []);
 
 	return (

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { fetchAuthState } from "../thunks/auth.js";
 
 const initialState = {
 	isLoggedIn: false,
@@ -17,7 +17,13 @@ const authSlice = createSlice({
 		setUser: (state, action) => {
 			state.user = action.payload;
 		},
-	}
+	},
+	extraReducers: (builder) => {
+		builder.addCase(fetchAuthState.fulfilled, (state, action) => {
+			state.isLoggedIn = true;
+			state.user = action.payload;
+		});
+	},
 });
 
 export const authReducer = authSlice.reducer;
