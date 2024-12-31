@@ -11,17 +11,22 @@ import MainLayout from "./layouts/MainLayout.jsx";
 
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import { fetchAuthState } from "src/state/thunks/auth.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { selectTheme } from "src/state/slices/theme.js";
 
 function App() {
 	const dispatch = useDispatch();
+	const theme = useSelector(selectTheme);
 
 	useEffect(() => {
 		dispatch(fetchAuthState());
 	}, []);
+
+	useEffect(() => {
+		document.documentElement.setAttribute("data-bs-theme", theme);
+	}, [theme]);
 
 	return (
 		<Routes>

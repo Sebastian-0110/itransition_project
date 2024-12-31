@@ -14,7 +14,6 @@ function ThemeSelector() {
 	const theme = useSelector(selectTheme);
 
 	useEffect(() => {
-		document.documentElement.setAttribute("data-bs-theme", theme);
 		localStorage.setItem("theme", theme);
 	}, [theme]);
 
