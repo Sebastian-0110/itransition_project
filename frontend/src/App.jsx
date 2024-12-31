@@ -2,15 +2,19 @@ import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router";
 
 import Home from "./pages/Home.jsx";
+import Main from "./pages/Main.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import NotFound from "./pages/NotFound.jsx"
 import LandingLayout from "./layouts/LandingLayout.jsx";
+import MainLayout from "./layouts/MainLayout.jsx";
 
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import { fetchAuthState } from "src/state/thunks/auth.js";
 import { useDispatch } from "react-redux";
 
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 function App() {
 	const dispatch = useDispatch();
@@ -21,27 +25,29 @@ function App() {
 
 	return (
 		<Routes>
-			<Route element={<LandingLayout/>}>
+			<Route element={
+				<ProtectedRoute requiresAuth={false} redirectTo="/app/">
+					<LandingLayout />
+				</ProtectedRoute>
+			}>
 				<Route index element={<Home />}/>
 
 				<Route path="/auth">
 					<Route index element={<Navigate to="signup" replace/>}/>
-					<Route path="login" element={
-						<ProtectedRoute requiresAuth={false} redirectTo="/app/">
-							<Login/>
-						</ProtectedRoute>
-					} />
-
-					<Route path="signup" element={
-						<ProtectedRoute requiresAuth={false} redirectTo="/app/">
-							<Signup/>
-						</ProtectedRoute>
-					} />
-
+					<Route path="login" element={ <Login /> } />
+					<Route path="signup" element={ <Signup /> } />
 				</Route>
-
-				<Route path="*" element={<NotFound/>}/>
 			</Route>
+
+			<Route path="/app/" element={
+				<ProtectedRoute requiresAuth={true} redirectTo="/" >
+					<MainLayout />
+				</ProtectedRoute>
+			}>
+				<Route index element={<Main />} />
+			</Route>
+
+			<Route path="*" element={<NotFound/>}/>
 		</Routes>
 	)
 }

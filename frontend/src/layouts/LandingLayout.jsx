@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 import LandingNavbar from "../components/navbars/LandingNavbar.jsx";
 
-function MainLayout() {
+function LandingLayout() {
 	return (
 		<>
 			<div className="vh-100 d-flex flex-column">
@@ -15,4 +15,4 @@ function MainLayout() {
 	)
 }
 
-export default MainLayout;
+export default LandingLayout;
