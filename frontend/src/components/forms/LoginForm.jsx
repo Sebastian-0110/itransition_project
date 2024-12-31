@@ -33,7 +33,7 @@ function LoginForm() {
 		dispatch(setLoggedIn(true));
 		dispatch(setUser(await result.json()));
 
-		return navigate("/"); // TODO: Change this to redirect to /app
+		return navigate("/app/");
 	}
 
 	return (
