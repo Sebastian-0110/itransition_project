@@ -27,4 +27,14 @@ router.post(
     }
 )
 
+router.get(
+    "/status",
+    (req, res) => {
+        const user = req.user;
+
+        if (!user) return res.status(401).send();
+        return res.status(200).json(req.user);
+    }
+);
+
 module.exports = router;
