@@ -6,6 +6,11 @@ import App from './App.jsx'
 
 import { Provider } from "react-redux";
 import store from "./state/store.js";
+import { selectTheme } from "./state/slices/theme.js";
+
+// Set the initial theme based on the Redux store's default state
+const initialTheme = selectTheme(store.getState());
+document.documentElement.setAttribute("data-bs-theme", initialTheme);
 
 createRoot(document.getElementById('root')).render(
 	<BrowserRouter>
