@@ -30,6 +30,11 @@ class UserService {
 
         return UserMapper.toDTO(user);
     }
+
+    async findAll() {
+        const users = await this.userRepository.findAll();
+        return users.map((user) => UserMapper.toDTO(user));
+    }
 }
 
 module.exports = UserService;
