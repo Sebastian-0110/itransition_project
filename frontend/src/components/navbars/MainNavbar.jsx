@@ -26,7 +26,7 @@ function MainNavbar() {
 				<Navbar.Collapse id="navbar-nav">
 					<Nav className="ms-auto align-items-center flex-sm-row-reverse">
 						{
-							user.isAdmin ? <>
+							user?.isAdmin ? <>
 								<Nav.Link>
 									<Link to="/admin/users/">
 										<Button variant="danger">Manage users</Button>
