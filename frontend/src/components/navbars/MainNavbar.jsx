@@ -27,7 +27,7 @@ function MainNavbar() {
 					<Nav className="ms-auto align-items-center flex-sm-row-reverse">
 						{
 							user?.isAdmin ? <>
-								<Nav.Link>
+								<Nav.Link as="div">
 									<Link to="/admin/users/">
 										<Button variant="danger">Manage users</Button>
 									</Link>
@@ -35,7 +35,7 @@ function MainNavbar() {
 							</> : false
 						}
 
-						<Nav.Link>
+						<Nav.Link as="div">
 							<Link to="/account/">
 								<Button variant="info">My account</Button>
 							</Link>
