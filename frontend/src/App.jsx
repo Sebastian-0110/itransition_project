@@ -31,7 +31,7 @@ function App() {
 	return (
 		<Routes>
 			<Route element={
-				<ProtectedRoute requiresAuth={false} redirectTo="/app/">
+				<ProtectedRoute requiresAuth={false} requiresAdmin={false} redirectTo="/app/">
 					<LandingLayout />
 				</ProtectedRoute>
 			}>
@@ -45,7 +45,7 @@ function App() {
 			</Route>
 
 			<Route path="/app/" element={
-				<ProtectedRoute requiresAuth={true} redirectTo="/" >
+				<ProtectedRoute requiresAuth={true} requiresAdmin={false} redirectTo="/" >
 					<MainLayout />
 				</ProtectedRoute>
 			}>
