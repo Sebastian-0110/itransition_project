@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const { passport, session } = require("./middleware");
 const authRoutes = require("./routes/auth");
+const adminRoutes = require("./routes/admin");
 require("dotenv").config();
 
 
@@ -19,6 +20,7 @@ app.use(session);
 app.use(passport.authenticate("session"));
 
 app.use("/auth", authRoutes);
+app.use("/admin", adminRoutes);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
