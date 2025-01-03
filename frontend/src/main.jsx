@@ -13,11 +13,11 @@ const initialTheme = selectTheme(store.getState());
 document.documentElement.setAttribute("data-bs-theme", initialTheme);
 
 createRoot(document.getElementById('root')).render(
-	<BrowserRouter>
-		<StrictMode>
+	<StrictMode>
+		<BrowserRouter>
 			<Provider store={store}>
 				<App/>
 			</Provider>
-		</StrictMode>
-	</BrowserRouter>,
+		</BrowserRouter>,
+	</StrictMode>
 )
