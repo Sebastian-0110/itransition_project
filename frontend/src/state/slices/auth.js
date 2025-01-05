@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchAuthState } from "../thunks/auth.js";
+import { getAuthState } from "../thunks/auth.js";
 
 const initialState = {
 	isLoggedIn: false,
@@ -20,17 +20,17 @@ const authSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(fetchAuthState.pending, (state) => {
+		builder.addCase(getAuthState.pending, (state) => {
 			state.isDoneLoading = false;
 		});
 
-		builder.addCase(fetchAuthState.fulfilled, (state, action) => {
+		builder.addCase(getAuthState.fulfilled, (state, action) => {
 			state.isLoggedIn = true;
 			state.user = action.payload;
 			state.isDoneLoading = true;
 		});
 
-		builder.addCase(fetchAuthState.rejected, (state) => {
+		builder.addCase(getAuthState.rejected, (state) => {
 			state.isDoneLoading = true;
 		});
 	},

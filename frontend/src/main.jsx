@@ -7,10 +7,10 @@ import App from './App.jsx'
 import { Provider } from "react-redux";
 import store from "./state/store.js";
 import { selectTheme } from "./state/slices/theme.js";
-import { fetchAuthState } from "src/state/thunks/auth.js";
+import { getAuthState } from "src/state/thunks/auth.js";
 
 
-store.dispatch(fetchAuthState());
+store.dispatch(getAuthState());
 
 // Set the initial theme based on the Redux store's default state
 const initialTheme = selectTheme(store.getState());

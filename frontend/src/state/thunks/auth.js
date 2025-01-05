@@ -7,6 +7,6 @@ export const getAuthState = createAsyncThunk(
 		const result = await fetchAuthState();
 
 		if (!result.success) return rejectWithValue(result.error);
-		return result;
+		return result.data;
 	},
 );
