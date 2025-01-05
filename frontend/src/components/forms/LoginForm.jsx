@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import { EmailField, PasswordField } from "src/components/forms/fields";
-import { endpoint } from "src/config/api.js";
+import { endpoint } from "src/api/api.js";
 
 import { authSlice } from "src/state/slices"
 const { setLoggedIn, setUser} = authSlice;
