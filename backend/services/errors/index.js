@@ -1,4 +1,4 @@
 const authErrors = require("./authErrors");
+const userErrors = require("./userErrors");
 
-
-module.exports = { authErrors };
+module.exports = { authErrors, userErrors };

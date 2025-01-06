@@ -1,4 +1,4 @@
-const { authErrors } = require("./errors");
+const { authErrors, userErrors } = require("./errors");
 const UserMapper = require("./mappers/user-mapper");
 
 class UserService {
@@ -26,7 +26,7 @@ class UserService {
     async findById(id) {
         const user = await this.userRepository.findById(id);
 
-        if (!user) throw authErrors.UserNotFound();
+        if (!user) throw userErrors.UserNotFound();
 
         return UserMapper.toDTO(user);
     }
