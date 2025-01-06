@@ -1,4 +1,4 @@
-import Button from "react-bootstrap/Button";
+import AdminButton from "./AdminButton.jsx";
 import { SkeletonPlaceholder, SkeletonButtonPlaceholder } from "./Skeletons.jsx";
 
 export const columns = [
@@ -6,17 +6,7 @@ export const columns = [
 	{ label: "Username", field: "username", labelOnMobile: true },
 	{ label: "Email", field: "email",labelOnMobile: true },
 	{ label: "Role", field: (user) => user.isAdmin ? "Admin": "User",  labelOnMobile: true },
-	{
-		label: "Actions",
-		field: (user) => {
-			return (
-				<Button size="sm" variant={user.isAdmin ? "danger": "primary"}>
-					{user.isAdmin ? "Remove admin": "Grant admin"}
-				</Button>
-			);
-		},
-		labelOnMobile: false,
-	}
+	{ label: "Actions", field: (user) => <AdminButton user={user} />, labelOnMobile: false },
 ];
 
 export const skeletonColumns = [
