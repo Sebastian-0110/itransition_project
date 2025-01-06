@@ -6,4 +6,12 @@ class UserNotFound extends Error {
 	}
 }
 
-module.exports = { UserNotFound };
+class InvalidRole extends Error {
+	constructor() {
+		super("Invalid role");
+		this.name = "INVALID_ROLE";
+		this.statusCode = 403;
+	}
+}
+
+module.exports = { UserNotFound, InvalidRole };
