@@ -11,7 +11,7 @@ function TableBody({ columns, data }) {
 	return (
 		<tbody>
 			{ data.map((element, i) => {
-				return <tr key={i} className="d-flex flex-column d-sm-table-row">
+				return <tr key={i} className="d-flex flex-column d-sm-table-row mb-2">
 					{ columns.map((column) => {
 						return <td key={column.label} className="align-middle">
 							<TableData {...{ element, column }} />
