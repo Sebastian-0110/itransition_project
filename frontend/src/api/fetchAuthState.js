@@ -1,5 +1,5 @@
-import { endpoint } from "src/api/api.js";
 import { unsuccessfulResponse, errorOccurred, getData } from "./utils.js";
+import { endpoint } from "src/api/utils.js";
 
 
 const makeRequest = async () => {

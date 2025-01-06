@@ -6,7 +6,8 @@ import Button from "react-bootstrap/Button";
 
 import { UsernameField, EmailField, PasswordField } from "src/components/forms/fields";
 
-import { endpoint } from "src/api/api.js";
+
+import { endpoint } from "src/api/utils.js";
 
 function SignupForm() {
 	const [username, setUsername] = useState("");

@@ -1,3 +1,7 @@
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+export const endpoint = (path) => `${BACKEND_URL}${path}`;
+
 export const unsuccessfulResponse = (result, data) => {
 	return {
 		success: false,

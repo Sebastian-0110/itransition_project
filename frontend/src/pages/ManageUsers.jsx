@@ -2,7 +2,8 @@ import Container from "react-bootstrap/Container";
 import UserTable from "src/components/admin/manage-users/UserTable.jsx";
 
 import { useEffect, useState } from "react";
-import { endpoint } from "src/api/api.js";
+
+import { endpoint } from "src/api/utils.js";
 
 function ManageUsers() {
 	const [users, setUsers] = useState([]);
