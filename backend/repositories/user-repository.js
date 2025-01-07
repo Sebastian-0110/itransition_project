@@ -22,6 +22,14 @@ class UserRepository {
         const user = await this.userModel.create(data);
         if (user) return user.toJSON();
     }
+
+    async update(id, updates) {
+        const [affectedRows] = await this.userModel.update(updates, {
+            where: { id },
+        });
+
+         return affectedRows > 0;
+    }
 }
 
 module.exports = UserRepository;
