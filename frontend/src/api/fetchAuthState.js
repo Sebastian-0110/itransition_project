@@ -1,26 +1,16 @@
-import { unsuccessfulResponse, errorOccurred, getData } from "./utils.js";
-import { endpoint } from "src/api/utils.js";
-
-
-const makeRequest = async () => {
-	const result = await fetch(endpoint("/auth/status"), {
-		method: "GET",
-		headers: { "Accept": "application/json" }
-	});
-
-	const data = await getData(result);
-	if (!result.ok) return unsuccessfulResponse(result, data);
-	return { success: true, data }
-}
+import { endpoint } from "./utils.js";
+import makeRequest from "./makeRequest.js";
 
 async function fetchAuthState() {
-	try {
-		return await makeRequest();
+	const fetchCallingFunction = async () => {
+		return await fetch(endpoint("/auth/status"), {
+			method: "GET",
+			headers: { "Accept": "application/json" }
+		});
 	}
+	return makeRequest(fetchCallingFunction);
 
-	catch (error) {
-		return errorOccurred(error);
-	}
 }
+
 
 export default fetchAuthState;
