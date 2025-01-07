@@ -2,24 +2,19 @@ import Container from "react-bootstrap/Container";
 import UserTable from "src/components/admin/manage-users/UserTable.jsx";
 
 import { useEffect, useState } from "react";
-
-import { endpoint } from "src/api/utils.js";
+import fetchUsers from "src/api/fetchUsers.js";
 
 function ManageUsers() {
 	const [users, setUsers] = useState([]);
 	const [isDoneLoading, setIsDoneLoading] = useState(false);
 
 	useEffect(() => {
-		async function fetchUsers() {
-			const result = await fetch(endpoint("/admin/users/"), {
-				method: "GET", headers: { "Accept": "application/json" },
-			});
-
-			const data = await result.json();
-			setUsers(data["users"] || []);
+		async function fetchUsersSideEffect() {
+			const result = await fetchUsers();
+			setUsers(result.data?.users || []);
 			setIsDoneLoading(true);
 		}
-		fetchUsers();
+		fetchUsersSideEffect();
 	}, []);
 
 	return (
