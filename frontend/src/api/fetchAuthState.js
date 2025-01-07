@@ -8,8 +8,8 @@ async function fetchAuthState() {
 			headers: { "Accept": "application/json" }
 		});
 	}
-	return makeRequest(fetchCallingFunction);
 
+	return makeRequest(fetchCallingFunction);
 }
 
 
