@@ -10,7 +10,7 @@ async function updateRole(id, role) {
 		});
 	}
 
-	return await makeRequest(fetchCallingFunction());
+	return await makeRequest(fetchCallingFunction);
 }
 
 export default updateRole;
