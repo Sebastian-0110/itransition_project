@@ -19,7 +19,7 @@ function UserProvider({ children }) {
 		async function fetchUsersSideEffect() {
 			const result = await fetchUsers();
 			if (result.success) setUsers(result.data.users);
-			else console.log("Couldn't fetch users: " + result.error);
+			else console.log("Couldn't fetch users: " + JSON.stringify(result.error));
 			setIsDoneLoading(true);
 		}
 		fetchUsersSideEffect();
