@@ -1,14 +1,28 @@
 import Button from "react-bootstrap/Button";
-import updateRole from "src/api/updateRole.js";
-import {useState} from "react";
+import { useState } from "react";
 
-function AdminButton({ user, updateUser }) {
-	const variant = user.isAdmin ? "danger": "primary";
+import useUpdateReduxUser from "./hooks/useUpdateReduxUser.js";
+import updateRole from "src/api/updateRole.js";
+
+import useUsers from "src/components/admin/manage-users/hooks/useUsers.js";
+
+
+function AdminButton({ user }) {
 	const [isFetching, setIsFetching] = useState(false);
+	const updateReduxUser = useUpdateReduxUser();
+	const { updateUserTableData } = useUsers();
 
 	async function handleClick() {
 		setIsFetching(true);
-		const result = await updateRole(user.id, user.isAdmin ? "user": "admin");
+		const result = await updateRole(user.id,user.isAdmin ? "user" : "admin");
+
+		if (result.success) {
+			updateUserTableData(result.data.user);
+			updateReduxUser(result.data.user);
+		}
+
+		else alert("Couldn't grant/revoke admin permissions")
+
 		setIsFetching(false);
 	}
 
@@ -17,7 +31,7 @@ function AdminButton({ user, updateUser }) {
 			<Button
 				size="sm"
 				disabled={isFetching}
-				variant={variant}
+				variant={user.isAdmin ? "danger": "primary"}
 				onClick={handleClick}>
 				{user.isAdmin ? "Remove admin": "Grant admin"}
 			</Button>

@@ -4,7 +4,12 @@ import TableBody from "src/components/tables/TableBody.jsx";
 
 import { columns, skeletonColumns, skeletonData } from "./table.jsx";
 
-function UserTable({ isDoneLoading, users }) {
+import useUsers from "src/components/admin/manage-users/hooks/useUsers.js";
+
+
+function UserTable() {
+	const { users, isDoneLoading } = useUsers();
+
 	return (
 		<Table
 			columns={isDoneLoading ? columns: skeletonColumns }
