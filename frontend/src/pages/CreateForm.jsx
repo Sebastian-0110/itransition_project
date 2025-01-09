@@ -22,7 +22,7 @@ function CreateForm() {
 			return [...oldQuestions, {
 				id: oldQuestions.length + 1,
 				title: newQuestion,
-				type: newQuestionType,
+				type: "string",
 			}]
 		})
 
@@ -82,7 +82,7 @@ function CreateForm() {
 							</Form.Group>
 
 							<Form.Select onChange={(e) => setNewQuestionType(e.target.value)}>
-								<option value="string">String</option>
+								<option default value="string">String</option>
 								<option disabled>More options coming soon...</option>
 							</Form.Select>
 
