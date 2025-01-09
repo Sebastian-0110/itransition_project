@@ -8,12 +8,10 @@ const localStrategy = new LocalStrategy(
 	async (email, password, done) => {
 		try {
 			const user = await userService.login(email, password);
-			console.log("Logged in correctly: " + user.email);
 			return done(null, user);
 		}
 
 		catch (error) {
-			console.log("")
 			if (error instanceof authErrors.InvalidCredentials) return done(null, false, { message: error.message });
 			return done(error);
 		}
