@@ -27,7 +27,9 @@ function SignupForm() {
 			}
 		);
 
-		if (!result.ok) return alert("Invalid input"); // TODO: Implement a proper notification system
+		const data = await result.json();
+
+		if (!result.ok) return alert(data.message);
 
 		alert("Successfully signup. Now login!");
 		return navigate("/auth/login/");
