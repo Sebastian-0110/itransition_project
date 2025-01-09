@@ -18,7 +18,10 @@ class UserService {
         }
 
         catch (err) {
-            return null;
+            if (
+                err.name === "SequelizeUniqueConstraintError" &&
+                err.errors.find(error => error.path === 'email')
+            ) throw new authErrors.EmailAlreadyInUse();
         }
 
     }

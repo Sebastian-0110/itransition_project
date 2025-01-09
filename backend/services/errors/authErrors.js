@@ -6,4 +6,12 @@ class InvalidCredentials extends Error {
 	}
 }
 
-module.exports = { InvalidCredentials };
+class EmailAlreadyInUse extends Error {
+	constructor() {
+		super("Email already in use");
+		this.name = "EMAIL_ALREADY_IN_USE";
+		this.statusCode = 409;
+	}
+}
+
+module.exports = { InvalidCredentials, EmailAlreadyInUse };
