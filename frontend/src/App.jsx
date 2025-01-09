@@ -55,7 +55,9 @@ function App() {
 				<Route path="users" element={<ManageUsers />} />
 			</Route>
 
-			<Route path="*" element={<NotFound/>}/>
+			<Route element={<LandingLayout />} >
+				<Route path="*" element={<NotFound/>} />
+			</Route>
 		</Routes>
 	)
 }
