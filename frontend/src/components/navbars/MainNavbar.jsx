@@ -36,7 +36,7 @@ function MainNavbar() {
 						}
 
 						<Nav.Link as="div">
-							<Link to="/account/">
+							<Link to="/app/account/">
 								<Button variant="info">My account</Button>
 							</Link>
 						</Nav.Link>

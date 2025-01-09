@@ -7,6 +7,7 @@ import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import ManageUsers from "src/pages/ManageUsers.jsx";
+import Account from "src/pages/Account.jsx";
 import LandingLayout from "./layouts/LandingLayout.jsx";
 import MainLayout from "./layouts/MainLayout.jsx";
 
@@ -45,6 +46,7 @@ function App() {
 				</ProtectedRoute>
 			}>
 				<Route index element={<Main />} />
+				<Route path="account" element={<Account />} />
 			</Route>
 
 			<Route path="/admin/" element={
