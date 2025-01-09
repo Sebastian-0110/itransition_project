@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound.jsx";
 import ManageUsers from "src/pages/ManageUsers.jsx";
 import Account from "src/pages/Account.jsx";
 import MyForms from "src/pages/MyForms.jsx";
+import CreateForm from "src/pages/CreateForm.jsx";
 import LandingLayout from "./layouts/LandingLayout.jsx";
 import MainLayout from "./layouts/MainLayout.jsx";
 
@@ -49,6 +50,7 @@ function App() {
 				<Route index element={<Main />} />
 				<Route path="account" element={<Account />} />
 				<Route path="my-forms" element={<MyForms />} />
+				<Route path="create-form" element={<CreateForm />} />
 			</Route>
 
 			<Route path="/admin/" element={
