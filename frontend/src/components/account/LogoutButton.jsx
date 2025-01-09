@@ -14,7 +14,7 @@ function LogoutButton() {
 	}
 
 	return (
-		<Button onClick={handleClick} disabled={isFetching} size="lg">Logout</Button>
+		<Button onClick={handleClick} disabled={isFetching} size="lg" variant="danger">Logout</Button>
 	)
 }
 

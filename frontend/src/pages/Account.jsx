@@ -5,8 +5,10 @@ import Col from "react-bootstrap/Col";
 import ProfilePicture from "src/components/account/ProfilePicture.jsx";
 import AccountDetail from "src/components/account/AccountDetail.jsx";
 import LogoutButton from "src/components/account/LogoutButton.jsx";
+import MyFormsButton from "src/components/account/MyFormsButton.jsx";
 import { useSelector } from "react-redux";
 import { selectUser } from "src/state/slices/auth.js";
+
 
 function Account() {
 	const user = useSelector(selectUser);
@@ -30,9 +32,11 @@ function Account() {
 			</Row>
 
 			<Row className="justify-content-center mt-3">
-				<Col xs="auto">
+				<Col xs={12} className="d-flex flex-column flex-sm-row justify-content-center gap-3">
+					<MyFormsButton />
 					<LogoutButton />
 				</Col>
+
 			</Row>
 		</Container>
 	)
