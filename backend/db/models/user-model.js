@@ -30,6 +30,11 @@ const User = sequelize.define(
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: false,
+        },
+
+        avatar: {
+            type: DataTypes.STRING,
+            allowNull: false,
         }
     },
     {

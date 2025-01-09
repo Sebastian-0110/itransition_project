@@ -2,15 +2,25 @@ const { authErrors, userErrors } = require("./errors");
 const UserMapper = require("./mappers/user-mapper");
 
 class UserService {
-    constructor(userRepository, passwordService) {
+    constructor(userRepository, passwordService, avatarService) {
         this.userRepository = userRepository;
         this.passwordService = passwordService;
+        this.avatarService = avatarService;
     }
 
     async signup(data) {
         data.password = await this.passwordService.generatePasswordHash(data.password);
-        const user = await this.userRepository.create(data);
-        if (user) return UserMapper.toDTO(user);
+        const avatar = this.avatarService.createAvatar(data.email);
+
+        try {
+            const user = await this.userRepository.create({ ...data, avatar });
+            if (user) return UserMapper.toDTO(user);
+        }
+
+        catch (err) {
+            return null;
+        }
+
     }
 
     async login(email, password) {

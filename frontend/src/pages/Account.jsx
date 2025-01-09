@@ -17,7 +17,7 @@ function Account() {
 
 			<Row className="justify-content-center">
 				<Col xs={8} sm={6} md={3}>
-					<ProfilePicture url="https://robohash.org/nomb?size=1024x1024" />
+					<ProfilePicture url={user.avatar} />
 				</Col>
 			</Row>
 
